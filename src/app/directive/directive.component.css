@@ -1,0 +1,17 @@
+.txtPrimary{
+    color: blueviolet;
+    text-transform: uppercase;
+    font-style: oblique;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.txtDanger{
+    color: aquamarine;
+    font-size: xx-large;
+    text-decoration: solid;
+    font-size: smaller;
+}
+.special:hover{
+    color: chartreuse;
+    text-decoration: solid;
+    font-size: xx-large;
+}
