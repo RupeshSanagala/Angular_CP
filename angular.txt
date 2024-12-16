@@ -1,0 +1,251 @@
+11/12/24
+------------
+
+What is Angular:
+-----------------
+Angular is a javascript framework and it is used to create single page application.
+latest version of angular is 18 and it is developed and maintained by Google.
+
+s/w pre -requisite
+=======================
+node.js  
+   node --version  
+typescript 
+   tsc -v 
+-angular 
+   ng --version 
+
+How to install angular
+------------------------
+npm install -g @angular/cli
+
+ng --v
+
+How to create angular project:
+----------------------------------
+step1: ng new projectName
+step2: cd projectName
+step3: ng serve or ng s 
+step4: go and paste this link in browser : http://localhost:4200
+
+
+How to start angular project:
+--------------------------------
+ng serve or ng s
+
+Angular works on component:
+-------------------------------
+component:
+--------------
+It is a partial part of angular project which contains logical code and can be reusuable anywhere in the project.
+In angular root component name is "app".
+
+How to create component in angular:
+-------------------------------------
+ng generate component componentName (or) ng g c componentName
+
+whwn we create component in angular it generates four file:
+-----------------------------------------------------------
+1)html 
+2)css
+3)ts
+4)spec.ts(It is a test file)
+
+components:
+--------------
+ng g c databinding
+ng g c directive
+
+How to get output of individual component:
+-----------------------------------------------
+step1: go to component ts file in app and copy its selector name and write as tag where you want.
+
+databinding:
+---------------
+Getting or accesing data from one file to another file in same component
+
+1.interpolation({{logical code}}):
+-----------------------------------------
+in this send data from ts file => html file
+
+2.property binding[]:
+-------------------------
+In this we set attribute(property) values ts => html
+
+3.event binding():
+--------------------
+In this we sent data from html => ts file
+
+4.two-way databinding [()]:
+----------------------------
+In this we can send data from ts <=> html
+- to perform two-way databinding we have ngModel directory but ngModel directory is not part of core angular module it is part formsModule
+-For this first we have to import formsModule in component.ts file in import array
+
+directive in Angular:
+-------------------------
+It is used to change appearance and behaviour , as well as perform DOM manipulation in angular.
+-there are three types of directive:
+-------------------------------------
+1) Structural directive: It is used to perform DOM manipulation in angular
+                        Structural directive denoted by *
+                        Structural directives are *ngIf,*ngFor,*ngSwitch
+                        we can apply one directive at a time to single element.
+                        It is a part of comman module, for this we have to import comman in component
+
+- ng-template: display output on the basis of condition.
+- to create refernce variable in angular we use #
+2) attribute directive: 
+-------------------------
+It is use to change appearance and behaviour of DOM
+-ngStyle: It is used to apply css style property on the basis of condition
+-ngClass:  It is used to apply css Class on the basis of condition   
+-ngModel:                 
+3) custom directive: the directive created by developer
+ng g directive directiveName
+
+use of template refernce variable
+
+component interaction:
+accesing data from parent component to child component
+-Input() decorator: It is used to send data from parent component to child component
+-Output() decorator: It is used to send data from child component to parent component 
+
+*Pipes():
+----------
+It is used to transform property value without changing its original value.
+It is denoted by | sign.
+-to use pipes first we have to import common module in pipes.ts file.
+There are three types of pipes in angular:
+----------------------------------------------
+1)Inbuilt pipe: pipe provided by angular
+2)custom pipe:pipe create by developer for custome use
+3)thirdparty pipe: pipes already developed by thirdparty vendor, first we have to install it and use it.
+
+1.Inbuilt Pipe:
+---------------
+string pipe
+json pipe
+number pipe
+currency pipe
+date pipe
+
+2) Custom Pipe:
+----------------------
+How to create custom pipe:
+---------------------------------
+ng g p pipeName
+ng g p shared/customPipe/cube
+
+How to use bootstrap in angular:
+-----------------------------------
+step1: npm i bootstrap
+step2: go to angular.json and in its style array import its path.
+step3: restart angular project
+
+layout folder
+   nav,pageNotFound,MainDashBoard,Footer,Login
+Form folder
+   angForm,utdf,rtf
+
+Routing in Angular:
+------------------------
+-navigation of component
+-to display component output or navigating component by using Routing in angular for it we write code in app.routes.ts file.
+
+1)default Routing
+2)named Routing
+3)re-direct Routing
+4)parameterize Routing
+5)child Routing
+6)wild-card Routing
+
+================================================================
+12/12/24
+-----------
+
+*How to navigate in angular
+-------------------------------
+To perform component navigating we have to use RouterLink property within anchor tag,but first we have to import RouterLink in component ts file from "@angular/router" library
+
+Angular form:
+----------------
+There are two types of form:
+--------------------------------
+1)UTDF(User template Driven Form):
+------------------------------------
+when we have create simple form validation in that case we use it.
+to perform validation we have to use ngModel directory with input element.
+In this ngForm directory will hold data of all input element in it.
+In utdf form validation code reside in html file.
+
+2)RTF(Reactive template Form):
+------------------------------
+When we have to write complex logivc to perform validation in that case we use it.
+to use rtf form validation first we have to import ReactiveFormModule from FormsModule in component.
+In rtf we write form validation code in ts file.
+In this we use mainly two classes 1.FormGroup 2,FormControl
+    -FormGroup: it will hold information of all input element.
+    -Form control: it will hold information of individual input element.
+
+Service in angular:
+---------------------
+In angular service is special class with extra power
+It is used for multiple uses:
+    1.to share data with multiple component.
+    2.we can implement bussiness logic in it.
+    3.we can perform external communication(database connection)
+
+How to create service
+-------------------------------
+ng g service servicename
+ng g shared/services/itemservice 
+npx ng g service shared/services/dbservice
+
+*how to access data from service into angular component
+----------------------------------------------------------------
+-if you want to service data into angular for this first we have import service in component ts file and create instance of service class.
+
+Rest Fake api:
+---------------------
+
+CRUD:
+
+step1: cd src/app/shared/database 
+step2: npx json-server --watch -p 8888 db.json
+
+How to make API request from Angular to Server:
+------------------------------------------------------
+To send request from angular service to server for this we have to create instance of HttpClient class in service component
+
+
+13/12/24
+--------------
+Concurrently
+----------------
+
+npm i -g concurrently
+
+Step2: go to package.json file and in script part write below code.
+
+"json-server":"cd src/app/shared/database && json-server --watch -p 8888 db.json",
+"start-dev": "concurrently \"ng serve\" \"npm run json-server\",
+
+step3: terminate all server and terminal
+step4: run => npm run start-dev
+
+*guard: In angular guard is used to prevent rendering of routing component
+        -It return boolean value either true or false.
+        -If it return true then component will render otherwise not.
+
+*How to generate guard:
+--------------------------
+ng g guard gaurdname
+ng g guard shared/custguard/auth
+
+Testing in angular:
+----------------------
+ng test
+
+ng g service shared/services/mytestService
+
